@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111110">
+  <meta name="description" content="NOIR DETAILING — демонстрационная концепция премиального ухода за автомобилем.">
+  <title>NOIR DETAILING — внимание к каждой детали</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #111110;
+      --surface: #191918;
+      --text: #f2f0eb;
+      --muted: #9c9b96;
+      --line: rgba(255,255,255,.12);
+      --accent: #c9a77a;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: "DM Sans", Arial, sans-serif;
+      --display: "Manrope", Arial, sans-serif;
+      --wrap: 1240px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 15px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    body.menu-open { overflow: hidden; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    img { display: block; max-width: 100%; }
+    .wrap { width: min(var(--wrap), calc(100% - 64px)); margin-inline: auto; }
+    .eyebrow { display: flex; align-items: center; gap: 12px; color: var(--accent); font-size: 10px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; }
+    .eyebrow::before { width: 25px; height: 1px; background: currentColor; content: ""; }
+    .section { padding: 126px 0; }
+    .section-heading { display: flex; justify-content: space-between; align-items: end; gap: 32px; margin-bottom: 58px; }
+    .section-heading h2 { max-width: 700px; margin: 17px 0 0; font: 500 clamp(38px, 5vw, 66px)/1.07 var(--display); letter-spacing: -.055em; }
+    .section-heading > p { max-width: 330px; margin: 0 0 4px; color: var(--muted); font-size: 14px; }
+    .accent { color: var(--accent); }
+    .topbar { position: absolute; z-index: 20; inset: 0 0 auto; border-bottom: 1px solid rgba(255,255,255,.14); background: linear-gradient(180deg, rgba(13,13,12,.88), rgba(13,13,12,.66)); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+    .nav { min-height: 82px; display: flex; justify-content: space-between; align-items: center; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; font: 700 15px var(--display); letter-spacing: .12em; }
+    .brand-mark { width: 29px; height: 29px; border: 1px solid var(--accent); display: grid; place-items: center; color: var(--accent); font: italic 17px var(--serif); }
+    .nav-links { display: flex; align-items: center; gap: 34px; color: #d5d3cf; font-size: 12px; }
+    .nav-links a:not(.nav-cta) { transition: color .25s ease; }
+    .nav-links a:not(.nav-cta):hover { color: var(--accent); }
+    .nav-cta { padding: 11px 17px; border: 1px solid rgba(255,255,255,.3); transition: background .25s, color .25s, border-color .25s; }
+    .nav-cta:hover { color: var(--bg); background: var(--accent); border-color: var(--accent); }
+    .menu-toggle { display: none; width: 44px; height: 44px; padding: 12px; border: 1px solid var(--line); background: transparent; color: white; cursor: pointer; }
+    .menu-toggle span { display: block; width: 18px; height: 1px; margin: 5px 0; background: currentColor; transition: transform .25s; }
+    .hero { position: relative; min-height: 790px; height: min(940px, 100svh); display: flex; align-items: center; overflow: hidden; background: #171715; }
+    .hero::before { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(13,13,12,.91) 0%, rgba(13,13,12,.74) 41%, rgba(13,13,12,.08) 100%), linear-gradient(0deg, rgba(17,17,16,.68), transparent 40%), url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2200&q=85") center 55%/cover; content: ""; transform: scale(1.02); animation: hero-in 1.4s ease both; }
+    .hero::after { position: absolute; inset: 0; background: radial-gradient(ellipse at 75% 45%, transparent 10%, rgba(0,0,0,.2) 85%); content: ""; pointer-events: none; }
+    .hero-content { position: relative; z-index: 1; width: 100%; padding: clamp(32px, 5vh, 56px) 0 clamp(58px, 8vh, 76px); }
+    .hero .eyebrow { margin-bottom: clamp(16px, 2.2vh, 25px); }
+    .hero h1 { max-width: 770px; margin: 0; font: 500 clamp(44px, 7vw, 104px)/.98 var(--display); letter-spacing: -.075em; }
+    .hero h1 span { display: block; font-family: var(--serif); font-weight: 400; font-style: italic; letter-spacing: -.065em; color: var(--accent); }
+    .hero-copy { max-width: 400px; margin: clamp(18px, 2.6vh, 29px) 0 clamp(20px, 3vh, 32px); color: #d0cfca; font-size: 15px; }
+    .button { display: inline-flex; min-height: 52px; justify-content: center; align-items: center; gap: 24px; padding: 0 22px; background: var(--accent); color: #171512; border: 1px solid var(--accent); font-size: 12px; font-weight: 700; transition: color .25s, background .25s, transform .25s, box-shadow .25s; cursor: pointer; }
+    .button:hover { transform: translateY(-3px); background: #ddbd92; border-color: #ddbd92; box-shadow: 0 9px 28px rgba(201,167,122,.18); }
+    .button svg { width: 15px; height: 15px; transition: transform .25s; }
+    .button:hover svg { transform: translateX(4px); }
+    .hero-note { position: absolute; right: 0; bottom: 45px; z-index: 2; color: rgba(255,255,255,.65); font-size: 10px; letter-spacing: .13em; text-transform: uppercase; }
+    .hero-index { position: absolute; bottom: 43px; left: 0; z-index: 2; display: flex; align-items: center; gap: 13px; color: rgba(255,255,255,.58); font-size: 10px; letter-spacing: .12em; }
+    .hero-index::before { width: 40px; height: 1px; background: var(--accent); content: ""; }
+    .intro-strip { border-bottom: 1px solid var(--line); }
+    .intro-inner { min-height: 125px; display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+    .intro-inner p { max-width: 490px; margin: 0; color: #d4d2cc; font: 400 20px/1.5 var(--serif); }
+    .intro-meta { display: flex; gap: 40px; }
+    .intro-meta span { color: var(--muted); font-size: 10px; letter-spacing: .13em; text-transform: uppercase; }
+    .services { background: #151514; }
+    .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+    .service-card { min-height: 260px; position: relative; padding: 31px 30px 27px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: background .3s, transform .3s; }
+    .service-card:hover { z-index: 1; background: linear-gradient(145deg, rgba(201,167,122,.09), transparent 70%); transform: translateY(-4px); }
+    .service-number { color: var(--accent); font: italic 17px var(--serif); }
+    .service-card h3 { margin: 40px 0 10px; font: 500 23px var(--display); letter-spacing: -.04em; }
+    .service-card p { max-width: 290px; margin: 0; color: var(--muted); font-size: 13px; }
+    .service-arrow { position: absolute; top: 28px; right: 27px; color: #716e67; font-size: 18px; transition: color .25s, transform .25s; }
+    .service-card:hover .service-arrow { color: var(--accent); transform: translate(3px,-3px); }
+    .approach-layout { display: grid; grid-template-columns: .9fr 1.1fr; gap: 12%; align-items: start; }
+    .approach-lead { position: sticky; top: 120px; }
+    .approach-lead h2 { margin: 20px 0; font: 500 clamp(38px, 5vw, 62px)/1.08 var(--display); letter-spacing: -.06em; }
+    .approach-lead p { max-width: 380px; color: var(--muted); }
+    .principles { border-top: 1px solid var(--line); }
+    .principle { display: grid; grid-template-columns: 52px 1fr; gap: 22px; padding: 27px 0; border-bottom: 1px solid var(--line); }
+    .principle > span { color: var(--accent); font: italic 17px var(--serif); }
+    .principle h3 { margin: 0 0 7px; font: 500 19px var(--display); letter-spacing: -.03em; }
+    .principle p { margin: 0; color: var(--muted); font-size: 13px; }
+    .gallery { padding-top: 110px; background: #151514; }
+    .gallery-grid { display: grid; grid-template-columns: 1.16fr .84fr; grid-template-rows: 280px 280px; gap: 14px; }
+    .gallery-item { position: relative; overflow: hidden; background: #252421; }
+    .gallery-item:first-child { grid-row: span 2; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.72); transition: transform .7s cubic-bezier(.2,.7,.2,1), filter .5s; }
+    .gallery-item:hover img { transform: scale(1.045); filter: saturate(1); }
+    .gallery-item::after { position: absolute; inset: 35% 0 0; background: linear-gradient(transparent, rgba(0,0,0,.62)); content: ""; pointer-events: none; }
+    .gallery-caption { position: absolute; z-index: 1; right: 23px; bottom: 18px; left: 23px; display: flex; justify-content: space-between; align-items: end; gap: 12px; }
+    .gallery-caption strong { font: 500 18px var(--display); }
+    .gallery-caption span { color: rgba(255,255,255,.7); font-size: 10px; letter-spacing: .11em; text-transform: uppercase; }
+    .pricing-list { border-top: 1px solid var(--line); }
+    .price-row { display: grid; grid-template-columns: 1fr 1.2fr 150px; gap: 24px; align-items: center; padding: 26px 8px; border-bottom: 1px solid var(--line); transition: padding .25s, background .25s; }
+    .price-row:hover { padding-inline: 16px; background: rgba(255,255,255,.025); }
+    .price-name { font: 500 21px var(--display); letter-spacing: -.035em; }
+    .price-detail { color: var(--muted); font-size: 12px; }
+    .price-amount { text-align: right; font: 500 19px var(--display); }
+    .price-amount small { display: block; color: var(--muted); font: 11px var(--sans); }
+    .price-disclaimer { margin: 19px 0 0; color: #85837e; font-size: 11px; }
+    .faq { background: #151514; }
+    .faq-layout { display: grid; grid-template-columns: .78fr 1.22fr; gap: 10%; }
+    .faq-layout .section-heading { display: block; margin: 0; }
+    .faq-layout .section-heading h2 { font-size: clamp(38px, 4.7vw, 60px); }
+    .faq-list { border-top: 1px solid var(--line); }
+    .faq-item { border-bottom: 1px solid var(--line); }
+    .faq-question { width: 100%; min-height: 73px; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 16px 0; text-align: left; background: transparent; color: var(--text); border: 0; font-size: 14px; cursor: pointer; }
+    .faq-icon { flex: 0 0 24px; height: 24px; display: grid; place-items: center; border: 1px solid var(--line); color: var(--accent); font-size: 17px; transition: transform .25s, background .25s; }
+    .faq-question[aria-expanded="true"] .faq-icon { transform: rotate(45deg); background: rgba(201,167,122,.1); }
+    .faq-answer { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .3s ease; }
+    .faq-answer > div { overflow: hidden; }
+    .faq-answer p { max-width: 570px; margin: 0; padding: 0 35px 20px 0; color: var(--muted); font-size: 13px; }
+    .faq-item.is-open .faq-answer { grid-template-rows: 1fr; }
+    .contact { position: relative; overflow: hidden; }
+    .contact::before { position: absolute; top: -220px; right: -120px; width: 560px; height: 560px; border-radius: 50%; background: radial-gradient(circle, rgba(201,167,122,.1), transparent 68%); content: ""; pointer-events: none; }
+    .contact-layout { position: relative; display: grid; grid-template-columns: .9fr 1.1fr; gap: 12%; }
+    .contact-copy h2 { margin: 19px 0; font: 500 clamp(42px, 5vw, 64px)/1.05 var(--display); letter-spacing: -.06em; }
+    .contact-copy p { max-width: 370px; color: var(--muted); }
+    .contact-form { padding: 32px; border: 1px solid var(--line); background: rgba(255,255,255,.025); backdrop-filter: blur(12px); }
+    .field { margin-bottom: 18px; }
+    .field label { display: block; margin-bottom: 8px; color: #cbc9c3; font-size: 11px; }
+    .field input, .field select, .field textarea { width: 100%; min-height: 49px; padding: 12px 14px; border: 1px solid rgba(255,255,255,.13); border-radius: 0; outline: 0; background: rgba(0,0,0,.16); color: var(--text); transition: border-color .2s, box-shadow .2s; }
+    .field textarea { min-height: 86px; resize: vertical; }
+    .field select option { background: #191918; }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(201,167,122,.12); }
+    .field input::placeholder, .field textarea::placeholder { color: #77756f; }
+    .consent { display: flex; align-items: start; gap: 10px; margin: 3px 0 22px; color: var(--muted); font-size: 10px; }
+    .consent input { accent-color: var(--accent); margin: 3px 0 0; }
+    .form-error { display: none; margin: 0 0 16px; color: #efaa9e; font-size: 12px; }
+    .form-error.is-visible { display: block; }
+    .form-success { display: none; margin: 16px 0 0; padding: 12px 14px; border: 1px solid rgba(201,167,122,.35); color: #e0c49f; font-size: 12px; }
+    .form-success.is-visible { display: block; }
+    .contact-form .button { width: 100%; }
+    .footer { padding: 28px 0; border-top: 1px solid var(--line); }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; color: #86847e; font-size: 10px; }
+    .footer .brand { color: var(--text); font-size: 12px; }
+    .demo-badge { color: var(--accent); letter-spacing: .1em; text-transform: uppercase; }
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+    .reveal.is-visible { opacity: 1; transform: none; }
+    @keyframes hero-in { from { opacity: .35; transform: scale(1.06); } to { opacity: 1; transform: scale(1.02); } }
+    @media (max-width: 850px) {
+      .wrap { width: min(var(--wrap), calc(100% - 44px)); }
+      .section { padding: 94px 0; }
+      .nav-links { gap: 20px; }
+      .hero { min-height: 730px; height: 92svh; }
+      .hero::before { background-position: 58% center; }
+      .service-grid { grid-template-columns: repeat(2, 1fr); }
+      .approach-layout, .contact-layout { gap: 7%; }
+      .intro-meta { gap: 18px; }
+      .faq-layout { gap: 7%; }
+    }
+    @media (max-width: 640px) {
+      html { scroll-padding-top: 70px; }
+      .wrap { width: calc(100% - 40px); }
+      .section { padding: 76px 0; }
+      .section-heading { display: block; margin-bottom: 38px; }
+      .section-heading > p { margin-top: 18px; }
+      .topbar { position: absolute; }
+      .nav { min-height: 70px; }
+      .menu-toggle { position: relative; z-index: 22; display: block; }
+      .menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(3px) rotate(45deg); }
+      .menu-toggle[aria-expanded="true"] span:last-child { transform: translateY(-3px) rotate(-45deg); }
+      .nav-links { position: fixed; inset: 0; z-index: 21; display: flex; flex-direction: column; justify-content: center; align-items: stretch; gap: 0; padding: 90px 30px 35px; background: rgba(17,17,16,.98); opacity: 0; visibility: hidden; transform: translateY(-8px); transition: opacity .25s, visibility .25s, transform .25s; }
+      .nav-links.is-open { opacity: 1; visibility: visible; transform: none; }
+      .nav-links a:not(.nav-cta) { padding: 16px 2px; border-bottom: 1px solid var(--line); font: 500 22px var(--display); }
+      .nav-cta { margin-top: 24px; padding: 14px; text-align: center; }
+      .hero { min-height: 720px; height: 94svh; max-height: 900px; }
+      .hero::before { background-image: linear-gradient(90deg, rgba(13,13,12,.8), rgba(13,13,12,.28)), linear-gradient(0deg, rgba(17,17,16,.78), transparent 63%), url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=85"); background-position: 58% center; }
+      .hero-content { padding: 28px 0 58px; }
+      .hero .eyebrow { margin-bottom: 18px; }
+      .hero h1 { font-size: clamp(34px, 10vw, 44px); }
+      .hero-copy { max-width: 340px; font-size: 14px; }
+      .hero-note { right: 0; bottom: 27px; max-width: 150px; text-align: right; line-height: 1.5; }
+      .hero-index { bottom: 31px; }
+      .intro-inner { min-height: auto; align-items: start; flex-direction: column; padding: 28px 0; }
+      .intro-inner p { font-size: 18px; }
+      .intro-meta { flex-wrap: wrap; gap: 10px 24px; }
+      .service-grid { grid-template-columns: 1fr; }
+      .service-card { min-height: 218px; padding: 24px; }
+      .service-card h3 { margin-top: 31px; }
+      .approach-layout, .faq-layout, .contact-layout { grid-template-columns: 1fr; gap: 38px; }
+      .approach-lead { position: static; }
+      .gallery { padding-top: 75px; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 220px 170px; gap: 9px; }
+      .gallery-item:first-child { grid-column: span 2; grid-row: auto; }
+      .gallery-caption { right: 12px; bottom: 12px; left: 12px; display: block; }
+      .gallery-caption strong { display: block; font-size: 14px; }
+      .gallery-caption span { font-size: 8px; }
+      .price-row { grid-template-columns: 1fr auto; gap: 6px 12px; padding: 20px 2px; }
+      .price-name { font-size: 17px; }
+      .price-detail { grid-column: 1; grid-row: 2; }
+      .price-amount { grid-column: 2; grid-row: 1 / span 2; font-size: 16px; }
+      .contact-form { padding: 22px 18px; }
+      .footer-inner { align-items: start; flex-direction: column; gap: 11px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav wrap" aria-label="Основная навигация">
+      <a class="brand" href="#top" aria-label="NOIR DETAILING — на главную"><span class="brand-mark">N</span><span>NOIR <span class="accent">DETAILING</span></span></a>
+      <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav-links"><span></span><span></span></button>
+      <div class="nav-links" id="nav-links">
+        <a href="#services">Услуги</a>
+        <a href="#approach">Подход</a>
+        <a href="#gallery">Галерея</a>
+        <a href="#prices">Цены</a>
+        <a href="#faq">Вопросы</a>
+        <a class="nav-cta" href="#contact">Обсудить уход <span aria-hidden="true">↗</span></a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="top">
+      <div class="hero-content wrap">
+        <div class="eyebrow">Искусство ухода за автомобилем</div>
+        <h1>Точность.<span>В каждой детали.</span></h1>
+        <p class="hero-copy">Бережный детейлинг, который возвращает автомобилю выразительность — и сохраняет её надолго.</p>
+        <a class="button" href="#services">Открыть услуги <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 10h13m-5-5 5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg></a>
+      </div>
+      <div class="hero-index wrap">Премиальный уход без лишнего</div>
+      <div class="hero-note wrap">Демонстрационная концепция<br>NOIR DETAILING</div>
+    </section>
+
+    <div class="intro-strip">
+      <div class="intro-inner wrap">
+        <p>Не просто чистота. <span class="accent">Чувство, что всё на своём месте.</span></p>
+        <div class="intro-meta"><span>Внимание к материалам</span><span>Спокойный подход</span><span>Честный диалог</span></div>
+      </div>
+    </div>
+
+    <section class="section services" id="services">
+      <div class="wrap">
+        <div class="section-heading reveal">
+          <div><div class="eyebrow">Что мы делаем</div><h2>Уход, который<br>видно в деталях.</h2></div>
+          <p>Каждый автомобиль и его состояние уникальны. Подбираем подход после осмотра, а не по шаблону.</p>
+        </div>
+        <div class="service-grid">
+          <article class="service-card reveal"><span class="service-number">01</span><span class="service-arrow">↗</span><h3>Детейлинг-мойка</h3><p>Бережное очищение кузова, дисков и труднодоступных зон с вниманием к покрытиям.</p></article>
+          <article class="service-card reveal"><span class="service-number">02</span><span class="service-arrow">↗</span><h3>Полировка кузова</h3><p>Работа с состоянием лакокрасочного покрытия и визуальной глубиной цвета.</p></article>
+          <article class="service-card reveal"><span class="service-number">03</span><span class="service-arrow">↗</span><h3>Защитные покрытия</h3><p>Подбор и нанесение защитных составов с учётом использования автомобиля.</p></article>
+          <article class="service-card reveal"><span class="service-number">04</span><span class="service-arrow">↗</span><h3>Уход за салоном</h3><p>Аккуратная очистка и уход за кожей, текстилем, пластиком и другими материалами.</p></article>
+          <article class="service-card reveal"><span class="service-number">05</span><span class="service-arrow">↗</span><h3>Оклейка плёнкой</h3><p>Защита отдельных элементов кузова или комплексная оклейка по согласованию.</p></article>
+          <article class="service-card reveal"><span class="service-number">06</span><span class="service-arrow">↗</span><h3>Предпродажная подготовка</h3><p>Комплексный уход, чтобы автомобиль выглядел ухоженно перед новым этапом.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="approach">
+      <div class="approach-layout wrap">
+        <div class="approach-lead reveal"><div class="eyebrow">Наш подход</div><h2>Меньше обещаний.<br><span class="accent">Больше внимания.</span></h2><p>NOIR — демонстрационный проект студии. Мы не заявляем неподтверждённые результаты, а показываем принципы, на которых может строиться хороший сервис.</p></div>
+        <div class="principles">
+          <article class="principle reveal"><span>01</span><div><h3>Сначала разобраться</h3><p>Осматриваем автомобиль, обсуждаем ожидания и только потом предлагаем подходящие работы.</p></div></article>
+          <article class="principle reveal"><span>02</span><div><h3>Уважать материалы</h3><p>У разных поверхностей разные требования. Уход подбирается с учётом особенностей отделки.</p></div></article>
+          <article class="principle reveal"><span>03</span><div><h3>Объяснять понятным языком</h3><p>Рассказываем, что входит в работу, какие есть варианты и что можно ожидать от результата.</p></div></article>
+          <article class="principle reveal"><span>04</span><div><h3>Не делать лишнего</h3><p>Предлагаем только то, что соответствует задаче и состоянию конкретного автомобиля.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section gallery" id="gallery">
+      <div class="wrap">
+        <div class="section-heading reveal">
+          <div><div class="eyebrow">Визуальная история</div><h2>Красота — в нюансах.</h2></div>
+          <p>Настроение и эстетика NOIR DETAILING. Изображения — иллюстративные, не портфолио выполненных работ.</p>
+        </div>
+        <div class="gallery-grid">
+          <figure class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1400&q=85" alt="Автомобиль в тёмном студийном свете" loading="lazy"><figcaption class="gallery-caption"><strong>Форма и отражение</strong><span>Внимание к кузову</span></figcaption></figure>
+          <figure class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=85" alt="Деталь автомобиля Porsche" loading="lazy"><figcaption class="gallery-caption"><strong>Чистая линия</strong><span>Эстетика движения</span></figcaption></figure>
+          <figure class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=900&q=85" alt="Автомобиль на дороге" loading="lazy"><figcaption class="gallery-caption"><strong>Сдержанный характер</strong><span>Автомобиль как искусство</span></figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="prices">
+      <div class="wrap">
+        <div class="section-heading reveal">
+          <div><div class="eyebrow">Ориентиры</div><h2>Прозрачно с самого начала.</h2></div>
+          <p>Демонстрационные цены помогают представить формат. Стоимость реальных работ определяется после осмотра.</p>
+        </div>
+        <div class="pricing-list">
+          <div class="price-row reveal"><div class="price-name">Детейлинг-мойка</div><div class="price-detail">Кузов, диски, бережная сушка</div><div class="price-amount">от 4 900 ₽<small>демо-цена</small></div></div>
+          <div class="price-row reveal"><div class="price-name">Уход за салоном</div><div class="price-detail">Очистка основных поверхностей</div><div class="price-amount">от 9 900 ₽<small>демо-цена</small></div></div>
+          <div class="price-row reveal"><div class="price-name">Полировка кузова</div><div class="price-detail">Объём работ — после оценки покрытия</div><div class="price-amount">от 24 900 ₽<small>демо-цена</small></div></div>
+          <div class="price-row reveal"><div class="price-name">Защитное покрытие</div><div class="price-detail">Подбор состава под задачу</div><div class="price-amount">от 19 900 ₽<small>демо-цена</small></div></div>
+        </div>
+        <p class="price-disclaimer">Все цены на этой странице приведены исключительно для демонстрации макета и не являются публичной офертой.</p>
+      </div>
+    </section>
+
+    <section class="section faq" id="faq">
+      <div class="faq-layout wrap">
+        <div class="section-heading reveal"><div class="eyebrow">Частые вопросы</div><h2>Коротко<br>о важном.</h2><p>Не нашли ответ? Оставьте заявку — обсудим детали в демонстрационном формате.</p></div>
+        <div class="faq-list">
+          <article class="faq-item is-open reveal"><button class="faq-question" type="button" aria-expanded="true"><span>С чего начинается работа?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-answer"><div><p>С осмотра автомобиля и разговора о ваших пожеланиях. Так можно подобрать уместный объём работ и обсудить ориентировочную стоимость.</p></div></div></article>
+          <article class="faq-item reveal"><button class="faq-question" type="button" aria-expanded="false"><span>Сколько времени занимает детейлинг?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-answer"><div><p>Зависит от состояния автомобиля и выбранных услуг. Точные сроки можно назвать после определения объёма работ.</p></div></div></article>
+          <article class="faq-item reveal"><button class="faq-question" type="button" aria-expanded="false"><span>Как понять, нужна ли полировка?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-answer"><div><p>Это определяется при осмотре лакокрасочного покрытия. Специалист объяснит возможные варианты, их особенности и ограничения.</p></div></div></article>
+          <article class="faq-item reveal"><button class="faq-question" type="button" aria-expanded="false"><span>Можно выбрать отдельную услугу?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-answer"><div><p>Да. Комплекс не обязателен: состав работ подбирается под состояние автомобиля и вашу задачу.</p></div></div></article>
+          <article class="faq-item reveal"><button class="faq-question" type="button" aria-expanded="false"><span>Эта форма отправляет мои данные?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-answer"><div><p>Нет. Это демонстрационная форма: данные проверяются только в вашем браузере, никуда не отправляются и не сохраняются.</p></div></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="contact-layout wrap">
+        <div class="contact-copy reveal"><div class="eyebrow">Следующий шаг</div><h2>Давайте обсудим <span class="accent">ваш автомобиль.</span></h2><p>Оставьте контакты в демонстрационной форме. После проверки появится сообщение об успешном заполнении — данные никуда не передаются.</p></div>
+        <form class="contact-form reveal" id="contact-form" novalidate>
+          <div class="field"><label for="name">Как к вам обращаться</label><input id="name" name="name" type="text" placeholder="Ваше имя" autocomplete="name" required minlength="2" maxlength="60"></div>
+          <div class="field"><label for="phone">Номер телефона</label><input id="phone" name="phone" type="tel" placeholder="+7 (___) ___-__-__" autocomplete="tel" required></div>
+          <div class="field"><label for="service">Что вас интересует</label><select id="service" name="service" required><option value="" selected disabled>Выберите услугу</option><option>Детейлинг-мойка</option><option>Полировка кузова</option><option>Защитное покрытие</option><option>Уход за салоном</option><option>Другое / нужна консультация</option></select></div>
+          <div class="field"><label for="message">Комментарий <span style="color:var(--muted)">(необязательно)</span></label><textarea id="message" name="message" placeholder="Марка автомобиля или ваш вопрос"></textarea></div>
+          <label class="consent"><input type="checkbox" name="consent" required><span>Подтверждаю, что понимаю: это демонстрация, данные не отправляются и не сохраняются.</span></label>
+          <p class="form-error" id="form-error" role="alert"></p>
+          <button class="button" type="submit">Проверить и показать результат <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 10h13m-5-5 5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg></button>
+          <p class="form-success" id="form-success" role="status" aria-live="polite">Спасибо! Форма заполнена корректно. Это демонстрация: данные не отправлены и не сохранены.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="footer-inner wrap"><a class="brand" href="#top"><span class="brand-mark">N</span><span>NOIR <span class="accent">DETAILING</span></span></a><span>Концепция сайта. Вымышленная студия.</span><span class="demo-badge">Демонстрационный проект</span><span>© <span id="year"></span></span></div></footer>
+
+  <script>
+    (() => {
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const menuButton = document.querySelector(".menu-toggle");
+      const navLinks = document.querySelector(".nav-links");
+
+      function closeMenu() {
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Открыть меню");
+        navLinks.classList.remove("is-open");
+        document.body.classList.remove("menu-open");
+      }
+
+      menuButton.addEventListener("click", () => {
+        const opening = menuButton.getAttribute("aria-expanded") !== "true";
+        menuButton.setAttribute("aria-expanded", String(opening));
+        menuButton.setAttribute("aria-label", opening ? "Закрыть меню" : "Открыть меню");
+        navLinks.classList.toggle("is-open", opening);
+        document.body.classList.toggle("menu-open", opening);
+      });
+      navLinks.querySelectorAll("a").forEach(link => link.addEventListener("click", closeMenu));
+      document.addEventListener("keydown", event => { if (event.key === "Escape") closeMenu(); });
+
+      document.querySelectorAll(".faq-question").forEach(button => {
+        button.addEventListener("click", () => {
+          const item = button.closest(".faq-item");
+          const isOpen = button.getAttribute("aria-expanded") === "true";
+          button.setAttribute("aria-expanded", String(!isOpen));
+          item.classList.toggle("is-open", !isOpen);
+        });
+      });
+
+      const revealItems = document.querySelectorAll(".reveal");
+      if (reducedMotion || !("IntersectionObserver" in window)) {
+        revealItems.forEach(item => item.classList.add("is-visible"));
+      } else {
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12 });
+        revealItems.forEach(item => observer.observe(item));
+      }
+
+      const form = document.getElementById("contact-form");
+      const error = document.getElementById("form-error");
+      const success = document.getElementById("form-success");
+      form.addEventListener("input", () => {
+        error.classList.remove("is-visible");
+        success.classList.remove("is-visible");
+      });
+      form.addEventListener("submit", event => {
+        event.preventDefault();
+        success.classList.remove("is-visible");
+        if (!form.checkValidity()) {
+          const invalid = form.querySelector(":invalid");
+          error.textContent = invalid.type === "checkbox"
+            ? "Подтвердите, пожалуйста, что понимаете демонстрационный характер формы."
+            : invalid.type === "tel"
+              ? "Укажите номер телефона."
+              : invalid.tagName === "SELECT"
+                ? "Выберите интересующую услугу."
+                : invalid.validity.tooShort
+                  ? "Имя должно содержать не менее двух символов."
+                  : "Проверьте заполнение обязательных полей.";
+          error.classList.add("is-visible");
+          invalid.focus();
+          return;
+        }
+        error.classList.remove("is-visible");
+        success.classList.add("is-visible");
+      });
+
+      document.getElementById("year").textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
